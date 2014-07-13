@@ -1,0 +1,11 @@
+{
+  "name": "site",
+  "description": "hello world test app",
+  "version": "0.0.1",
+  "private": true,
+  "dependencies": {
+    "ejs": "^1.0.0",
+    "express": "3.x",
+    "express3-handlebars": ">= 0.5.0"
+  }
+}

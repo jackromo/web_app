@@ -1,0 +1,43 @@
+body {
+  background-color: #AAAAAA;
+}
+
+
+/*Style for header*/
+
+header {
+  background-color: #EEEEEE;
+  text-align: right;
+  height: 50px;
+  width: 100%;
+  top: 0px;
+}
+
+#head-links {
+  position: absolute;
+  right: 30px;
+  top: 15px;
+}
+
+#head-links a {
+  color: black;
+  padding: 10px;
+  border: 1px solid #EEEEEE;
+}
+
+#head-links a:hover {
+  background-color: #DDDDDD;
+  text-decoration: none;
+}
+
+#title {
+  text-align: left;
+  padding: 5px;
+  padding-left: 30px;
+  position: absolute;
+}
+
+#title a {
+  color: black;
+  font-size: 2em;
+}
