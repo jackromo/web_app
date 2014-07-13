@@ -1,7 +1,11 @@
 This is a web app for teaching Python programming online.
 
 In order to run it, you must have node and npm installed.
-To run the app, enter the directory of the app and run
+To run the app, first cd into the app's folder and run
+
+npm install
+
+and then run
 
 node app
 
@@ -10,6 +14,7 @@ in the terminal.
 It contains:
 - An embedded client-side Python editor (Skulpt)
 - A page of learning resources
+- The ability to login users and keep track of users currently online (this has no visible effect yet)
 
 It uses:
 - Node.js and Express for server
