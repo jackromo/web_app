@@ -2,25 +2,17 @@ body {
   background-color: #FFFFFF;
 }
 
-
 /* Style for Header */
 
 header {
-  background-color: #EEEEEE;
-  text-align: right;
   height: 50px;
   width: 100%;
   top: 0px;
 }
 
-header div div {  /*rows in header*/
-  height: 50px;
-}
-
-#home-head, #resources-head, #editor-head, #user-head {
+#header-ops li { /*All links in header*/
   color: black;
   text-align: center;
-  padding: 5px;
   font-size: 110%;
 }
 
@@ -30,9 +22,16 @@ header div div {  /*rows in header*/
   font-size: 2em;
 }
 
-#home-head:hover, #resources-head:hover, #editor-head:hover, #title-head:hover, #user-head:hover {
+#header-ops li:hover {
   background-color: #999999;
 }
+
+/*#user-dropdown {
+  width: 100%;
+  height: 100%;
+  border: 1px solid black;
+  padding: 0px;
+}*/
 
 /* Style for Footer */
 

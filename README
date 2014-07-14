@@ -5,7 +5,7 @@ To run the app, first cd into the app's folder and run
 
 npm install
 
-and then run
+This will install all dependencies. Then, to start the app, run
 
 node app
 
@@ -14,14 +14,17 @@ in the terminal.
 It contains:
 - An embedded client-side Python editor (Skulpt)
 - A page of learning resources
-- The ability to login users and keep track of users currently online (this has no visible effect yet)
+- User login and log out functionality (usernames and passwords stored in accounts.json)
 
 It uses:
 - Node.js and Express for server
+- Passport for user account maintenance
 - EJS for web pages
 - Skulpt for embedded editor
+- Bootstrap for styles and header (navbar)
 
 Planned features:
--Accounts for users, with username and password
 -File system so users can store their programs online
+-Admin account to access code from all users + manage accounts
+-More dynamic jQuery styling (?)
 -Support for more languages (?)

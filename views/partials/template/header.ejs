@@ -1,32 +1,45 @@
 <header>
-  <div class="container-fluid"> <!-- Keeps header from going off of side of page -->
-    <div class="row">
+  <nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container-fluid">
 
-      <a href="/">
-        <div class="col-md-3" id="title-head"> Awesome Title </div>
-      </a>
+      <div class="navbar-header">
+        <a class="navbar-brand" href="/" id="title-head"> Awesome Title </a>
+      </div>
 
-      <div class="col-md-3"></div>
+      <div class="collapse navbar-collapse">
 
-      <!-- This div will change its contents according to the current user -->
-      <a href="/login"> <div class="col-md-2" id="user-head">
-        <span class="glyphicon glyphicon-user"></span> Login or Sign Up
-      </div> </a>
+        <ul class="nav navbar-nav navbar-right" id="header-ops">
 
-      <div class="col-md-1"></div>
+          <% if(typeof user != 'undefined') { %>
+            <% include usermenu.ejs %>
+          <% } else { %>
+            <li id="login-head">
+              <a href="/login">
+                <span class="glyphicon glyphicon-user"></span> Login or Sign Up
+              </a>
+            </li>
+          <% } %>
 
-      <a href="/"> <div class="col-md-1" id="home-head">
-        <span class="glyphicon glyphicon-home"></span> Home
-      </div> </a>
+          <li id="home-head">
+            <a href="/">
+              <span class="glyphicon glyphicon-home"></span> Home
+            </a>
+          </li>
 
-      <a href="/resources"> <div class="col-md-1" id="resources-head">
-        <span class="glyphicon glyphicon-book"></span> Learn
-      </div> </a>
+          <li id="resources-head">
+            <a href="/resources">
+              <span class="glyphicon glyphicon-book"></span> Learn
+            </a>
+          </li>
 
-      <a href="/editor"> <div class="col-md-1" id="editor-head">
-        <span class="glyphicon glyphicon-list-alt"></span> Editor
-      </div> </a>
+          <li id="editor-head">
+            <a href="/editor">
+              <span class="glyphicon glyphicon-list-alt"></span> Editor
+            </a>
+          </li>
+        </ul> <!-- nav navbar-nav navbar-right -->
 
-    </div>
-  </div>
+      </div> <!-- collapse navbar-collapse -->
+    </div> <!-- container-fluid -->
+  </nav>
 </header>

@@ -109,9 +109,16 @@ app.get('/editor', router.editor);
 app.get('/login', router.login);
 
 app.post('/login',
+  /*Authenticate user - if failure, send to /login, if success, send to homepage*/
   passport.authenticate('local', { failureRedirect: '/login' }),
   function (req, res) {
     res.redirect('/');
+});
+
+app.get('/signout', function(req, res) {
+  /*Sign out user*/
+  req.logout();
+  res.redirect('/');
 });
 
 app.get('*', router.all);
