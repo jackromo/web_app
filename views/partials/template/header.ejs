@@ -1,12 +1,32 @@
 <header>
-  <section id="title">
-    <a href="/"> Awesome Title </a>
-  </section>
-  <nav id="head-links">
-    <a href="/"> <span class="glyphicon glyphicon-home"></span> Home </a>
-    <a href="/resources"> <span class="glyphicon glyphicon-book"></span> Resources </a>
-    <a href="/files"> <span class="glyphicon glyphicon-folder-open"></span> My Code </a>
-    <a href="/editor"> <span class="glyphicon glyphicon-list-alt"></span> Editor </a>
-  </nav>
-</header>
+  <div class="container-fluid"> <!-- Keeps header from going off of side of page -->
+    <div class="row">
 
+      <a href="/">
+        <div class="col-md-3" id="title-head"> Awesome Title </div>
+      </a>
+
+      <div class="col-md-3"></div>
+
+      <!-- This div will change its contents according to the current user -->
+      <a href="/login"> <div class="col-md-2" id="user-head">
+        <span class="glyphicon glyphicon-user"></span> Login or Sign Up
+      </div> </a>
+
+      <div class="col-md-1"></div>
+
+      <a href="/"> <div class="col-md-1" id="home-head">
+        <span class="glyphicon glyphicon-home"></span> Home
+      </div> </a>
+
+      <a href="/resources"> <div class="col-md-1" id="resources-head">
+        <span class="glyphicon glyphicon-book"></span> Learn
+      </div> </a>
+
+      <a href="/editor"> <div class="col-md-1" id="editor-head">
+        <span class="glyphicon glyphicon-list-alt"></span> Editor
+      </div> </a>
+
+    </div>
+  </div>
+</header>

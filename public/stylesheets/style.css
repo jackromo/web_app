@@ -3,7 +3,7 @@ body {
 }
 
 
-/*Style for header*/
+/* Style for Header */
 
 header {
   background-color: #EEEEEE;
@@ -13,31 +13,32 @@ header {
   top: 0px;
 }
 
-#head-links {
-  position: absolute;
-  right: 30px;
-  top: 15px;
+header div div {  /*rows in header*/
+  height: 50px;
 }
 
-#head-links a {
+#home-head, #resources-head, #editor-head, #user-head {
   color: black;
-  padding: 10px;
-  border: 1px solid #EEEEEE;
-}
-
-#head-links a:hover {
-  background-color: #DDDDDD;
-  text-decoration: none;
-}
-
-#title {
-  text-align: left;
+  text-align: center;
   padding: 5px;
-  padding-left: 30px;
-  position: absolute;
+  font-size: 110%;
 }
 
-#title a {
+#title-head {
+  text-align: center;
   color: black;
   font-size: 2em;
+}
+
+#home-head:hover, #resources-head:hover, #editor-head:hover, #title-head:hover, #user-head:hover {
+  background-color: #999999;
+}
+
+/* Style for Footer */
+
+#foot-contents {
+  position: fixed;
+  width: 100%;
+  background-color: #CCCCCC;
+  bottom: 0px;
 }
