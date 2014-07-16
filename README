@@ -15,6 +15,7 @@ It contains:
 - An embedded client-side Python editor (Skulpt)
 - A page of learning resources
 - User login and log out functionality (usernames and passwords stored in accounts.json)
+- Files page for viewing user's personal programs
 
 It uses:
 - Node.js and Express for server
@@ -24,7 +25,8 @@ It uses:
 - Bootstrap for styles and header (navbar)
 
 Planned features:
--File system so users can store their programs online
+-Ability to edit, save, delete, and make new personal stored programs
 -Admin account to access code from all users + manage accounts
 -More dynamic jQuery styling (?)
 -Support for more languages (?)
+-Ace editor/Codemirror

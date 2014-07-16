@@ -1,6 +1,7 @@
 var express = require('express');
 var router = require('./routes');
 var flash = require('connect-flash'); //Needed to display error messages from passport
+var fs = require('fs');
 
 //Needed for managing accounts and users
 var passport = require('passport');
@@ -104,9 +105,30 @@ passport.use( new LocalStrategy (
 
 app.get('/', router.home);
 app.get('/resources', router.resources);
-app.get('/files', router.files);
 app.get('/editor', router.editor);
 app.get('/login', router.login);
+
+
+//An old version of this exists in index.js, just here for testing file loading
+app.get('/files', function(req, res) {
+  if(req.user) {
+    var dir = "./public/user_files/" + req.user.username + "/";
+    var user_files = []; //Will contain array of objects about files, with props 'name' and 'contents'
+    // Will gather info about every program user has written and send them to files page
+    fs.readdir(dir, function(err, files) {
+      if(err) throw err;
+      //Loops through all file names, opening each and reading contents
+      for(var i = 0; i < files.length; i++) {
+        //readFileSync makes file reading synchronous, so in correct order
+        var data = fs.readFileSync(dir + files[i], 'utf8');
+        user_files.push({name: files[i], contents: data});
+      }
+      res.render('files_page', {user: req.user, files: user_files});
+    });
+  }
+  else
+    res.render('files_page', {files: []});
+});
 
 app.post('/login',
   /*Authenticate user - if failure, send to /login, if success, send to homepage*/

@@ -1,2 +1,18 @@
 <h1>Files</h1>
 
+<% for (var i=0; i < files.length; i++) { %>
+  <h1> <%= files[i].name %>  </h1>
+  <form>
+    <textarea id="code_<%= i %>" cols="40" rows="10">
+<%= files[i].contents %>
+</textarea>
+    <br />
+    <button onclick="runit(<%= i %>)" type="button"> Run </button>
+  </form>
+  <pre id="output_<%= i %>"> </pre>
+  <canvas id="canvas_<%= i %>"> </canvas>
+  <br />
+<% } %>
+
+<!-- Actual custom Python environment script -->
+<script src="scripts/files_env.js" type="text/javascript"></script>
