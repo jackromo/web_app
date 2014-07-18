@@ -130,20 +130,54 @@ app.get('/files', function(req, res) {
     res.render('files_page', {files: []});
 });
 
+
 app.post('/login',
-  /*Authenticate user - if failure, send to /login, if success, send to homepage*/
+  //Authenticate user - if failure, send to /login, if success, send to homepage
   passport.authenticate('local', { failureRedirect: '/login' }),
   function (req, res) {
     res.redirect('/');
 });
 
+
+//Called when user attempts to create new account
+app.post('/signup', function(req, res) {
+  //Allows for new account creation
+  //The id of the new_user is just which user they are (1rst, 2nd, 3rd, etc.)
+  console.log('Making new account for ' + req.body.username);
+  //Must check if username exists; if so, try again
+  for(var i = 0; i < accounts.users.length; i++) {
+    if(accounts.users[i].username == req.body.username) {
+      res.redirect('/login');
+      return null;
+    }
+  }
+  //Create object of new user, then push in list of users
+  var new_user = {id: accounts.users.length+1, username: req.body.username, password: req.body.password};
+  accounts.users.push(new_user);
+  console.log('New accounts.users: ' + accounts.users);
+  //Must overwrite old accounts.json file with new username added
+  fs.writeFile('accounts.json', JSON.stringify(accounts, null, 4));
+  //Makes directory for new user to store custom code
+  fs.mkdir('./public/user_files/' + req.body.username + '/', function(err) {
+    if(err) throw err;
+    console.log('Made file for ' + req.body.username);
+  });
+  //Log in as new user
+  req.login(new_user, function(err) {
+    if (err) throw err;
+    return res.redirect('/');
+  });
+});
+
+
 app.get('/signout', function(req, res) {
-  /*Sign out user*/
+  //Sign out user
   req.logout();
   res.redirect('/');
 });
 
-app.get('*', router.all);
+
+app.get('*', router.all); //All unrecognized requests are caught here
 
 
-app.listen(3000);
+app.listen(3000); //Set to be port you are using (testing with 3000)
