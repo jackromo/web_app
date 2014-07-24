@@ -1,5 +1,7 @@
 This is a web app for teaching Python programming online.
 
+NOTE: All contents of /public/boostrap/ are from Bootstrap, which can be accessed by 'getboostrap.com'.
+
 In order to run it, you must have node and npm installed.
 To run the app, first cd into the app's folder and run
 
