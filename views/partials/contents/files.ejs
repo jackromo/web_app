@@ -1,24 +1,31 @@
 <h1>Files</h1>
 
 <% for (var i=0; i < files.length; i++) { %>
-  <h1> <%= files[i].name %>  </h1>
 
-  <form>
-    <textarea id="code_<%= i %>" cols="40" rows="10">
+  <div id="editor_<%= i %>" display="visible"> <!-- div holds all elements related to program 'i' -->
+   <h1 id="head_<%= i %>"> <%= files[i].name %>  </h1>
+
+    <form>
+      <textarea id="code_<%= i %>" cols="40" rows="10">
 <%= files[i].contents %>
 </textarea>
+      <br />
+      <button onclick="runit(<%= i %>)" type="button"> Run </button>
+
+      <!-- saveit() and rem_prog() need name of file to know what file to save/delete -->
+      <button onclick="saveit(<%= i %>, '<%= files[i].name %>')" type="button"> Save </button>
+      <button onclick="rem_prog(<%= i %>, '<%= files[i].name %>')" type="button"> Remove </button>
+    </form>
+
     <br />
-    <button onclick="runit(<%= i %>)" type="button"> Run </button>
-    <button onclick="saveit(<%= i %>, '<%= files[i].name %>')" type="button"> Save </button>
-    <!-- saveit() needs name of file to know what file to save -->
-  </form>
 
-  <br />
+    <pre id="output_<%= i %>"> </pre> <!-- text output of program -->
+    <canvas id="canvas_<%= i %>"> </canvas> <!-- visual output of program -->
 
-  <pre id="output_<%= i %>"> </pre>
-  <canvas id="canvas_<%= i %>"> </canvas>
-  <br />
-<% } %>
+    <br />
+  </div> <!-- id=editor_X -->
+
+<% } %> <!-- end for loop -->
 
 <!-- Actual custom Python environment script -->
 <script src="scripts/files_env.js" type="text/javascript"></script>

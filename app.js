@@ -202,6 +202,17 @@ app.post('/save_old/:name?', function(req, res) {
 });
 
 
+//Called when user deletes file 'name'
+app.post('/remove/:name?', function(req, res) {
+  var name = req.params.name;
+  path = './public/user_files/' + req.user.username + '/' + name;
+  fs.unlink(path, function(err) {
+    if (err) throw err;
+    console.log("Successfully removed " + path);
+  });
+});
+
+
 app.get('/signout', function(req, res) {
   //Sign out user
   req.logout();

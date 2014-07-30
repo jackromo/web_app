@@ -39,7 +39,25 @@ function saveit(i, name) {
     var prog = document.getElementById("code_" + i).value; //Retrieve code
     var request = new XMLHttpRequest();  //Request will send the new code to server
     request.open("POST", "/save_old/" + name); //Add name to end to specify file to save
-    request.send(prog);
+    request.send(prog); //Sends code as plain text
+    alert("Done!");
+  }
+}
+
+//Deletes user's program
+function rem_prog(i, name) {
+  //Will make all elements related to file hidden if it is deleted
+  var editor = document.getElementById("editor_" + i);
+
+  if(confirm("Are you sure you want to remove " + name + "?")) {
+    //Send request to remove file
+    var request = new XMLHttpRequest();
+    request.open("POST", "/remove/" + name);
+    request.send(null);
+
+    //Hide all relevant elements
+    editor.style.display = 'none';
+
     alert("Done!");
   }
 }
