@@ -2,13 +2,19 @@
 
 <% for (var i=0; i < files.length; i++) { %>
   <h1> <%= files[i].name %>  </h1>
+
   <form>
     <textarea id="code_<%= i %>" cols="40" rows="10">
 <%= files[i].contents %>
 </textarea>
     <br />
     <button onclick="runit(<%= i %>)" type="button"> Run </button>
+    <button onclick="saveit(<%= i %>, '<%= files[i].name %>')" type="button"> Save </button>
+    <!-- saveit() needs name of file to know what file to save -->
   </form>
+
+  <br />
+
   <pre id="output_<%= i %>"> </pre>
   <canvas id="canvas_<%= i %>"> </canvas>
   <br />

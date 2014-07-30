@@ -32,3 +32,14 @@ function runit(i) {
        alert(e.toString())
    }
 }
+
+//Saves changes to old programs in /files
+function saveit(i, name) {
+  if(confirm("Are you sure about this?")) {
+    var prog = document.getElementById("code_" + i).value; //Retrieve code
+    var request = new XMLHttpRequest();  //Request will send the new code to server
+    request.open("POST", "/save_old/" + name); //Add name to end to specify file to save
+    request.send(prog);
+    alert("Done!");
+  }
+}

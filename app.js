@@ -33,6 +33,21 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 
+//Express bodyparser does not understand /text/plain type in requests, this allows it to parse it
+app.use(function(req, res, next){
+  if (req.is('text/plain')) {
+    //Creates a text attribute, sets encoding to plain text
+    req.text = '';
+    req.setEncoding('utf8');
+    //When data is received, append it to req.text; when request ends, terminate
+    req.on('data', function(chunk){ req.text += chunk });
+    req.on('end', next);
+  } else {
+    next();
+  }
+});
+
+
 
 
 
@@ -167,6 +182,23 @@ app.post('/signup', function(req, res) {
     if (err) throw err;
     return res.redirect('/');
   });
+});
+
+
+//Called when user saves changes to old file
+app.post('/save_old/:name?', function(req, res) {
+  var name = req.params.name; //Name of file to save to
+
+  //Make sure that request has 'text' parameter
+  if(typeof req.text != undefined) {
+    path = './public/user_files/' + req.user.username + '/' + name;
+    //Write text to file at above path
+    fs.writeFile(path, req.text, function(err) {
+      if (err) throw err;
+    });
+  } else {
+    console.log("XMLHttpRequest does not have text attribute");
+  }
 });
 
 
