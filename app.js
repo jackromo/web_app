@@ -124,7 +124,7 @@ app.get('/editor', router.editor);
 app.get('/login', router.login);
 
 
-//An old version of this exists in index.js, just here for testing file loading
+//Loads files page for user
 app.get('/files', function(req, res) {
   if(req.user) {
     var dir = "./public/user_files/" + req.user.username + "/";
@@ -146,6 +146,7 @@ app.get('/files', function(req, res) {
 });
 
 
+//Called when user attempts to log in (for POST request, see index.js for GET)
 app.post('/login',
   //Authenticate user - if failure, send to /login, if success, send to homepage
   passport.authenticate('local', { failureRedirect: '/login' }),
@@ -205,7 +206,7 @@ app.post('/save_old/:name?', function(req, res) {
 //Called when user deletes file 'name'
 app.post('/remove/:name?', function(req, res) {
   var name = req.params.name;
-  path = './public/user_files/' + req.user.username + '/' + name;
+  var path = './public/user_files/' + req.user.username + '/' + name;
   fs.unlink(path, function(err) {
     if (err) throw err;
     console.log("Successfully removed " + path);
@@ -213,6 +214,22 @@ app.post('/remove/:name?', function(req, res) {
 });
 
 
+//Called when user creates new file
+app.post('/new_prog/:name?', function(req, res) {
+  var name = req.params.name;
+  var path = './public/user_files/' + req.user.username + '/' + name;
+  //Check if file exists; if it doesn't, create file
+  fs.exists(path, function(exists) {
+    if(!exists) {
+      //fs.open with 'w' flag creates file if it doesn't exist
+      fs.open(path, 'w');
+      console.log("Created new file " + path);
+    } else console.log("Attempted to create existing file " + path);
+  });
+});
+
+
+//Called when user signs out
 app.get('/signout', function(req, res) {
   //Sign out user
   req.logout();

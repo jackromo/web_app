@@ -17,6 +17,7 @@ exports.resources = function (req, res) {
     res.render('resources_page');
 }
 
+//Not currently in use, see app.js for currently used callback
 exports.files = function (req, res) {
   if(req.user)
     res.render('files_page', {user: req.user});
@@ -31,7 +32,6 @@ exports.editor = function (req, res) {
     res.render('editor_page');
 }
 
-//This will soon need to only render the login page if no user is logged in
 exports.login = function (req, res) {
   if(req.user)
     res.render('login_page', {user: req.user});

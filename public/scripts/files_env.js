@@ -61,3 +61,17 @@ function rem_prog(i, name) {
     alert("Done!");
   }
 }
+
+//Make new program
+function new_prog() {
+  var name = prompt("Enter name of program \n(.py at end, alphanumeric chars or '_'):");
+  if(name) { //If user did not press 'cancel'
+    var request = new XMLHttpRequest();
+    request.open("POST", "/new_prog/" + name);
+    request.send(null);
+
+    alert("Program " + name + " successfully created!");
+
+    window.location.reload(true); //Reload page (render new file in browser)
+  }
+}
