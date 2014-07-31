@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+
+<!-- This is the layout of every page in website -->
+<!-- Is passed a 'page' var which says which partial to include -->
+
+<html lang="en">
+  <head>
+    <% include partials/template/head.ejs %>
+  </head>
+  <body>
+    <% include partials/template/header.ejs %>
+
+    <div class="container">
+      <!-- Check every possible page, include requested one -->
+      <% if (typeof page != undefined ) { %>
+        <% if (page == "home") { %>
+          <% include partials/contents/home.ejs %>
+        <% } else if (page == "files") { %>
+          <% include partials/contents/files.ejs %>
+        <% } else if (page == "resources") { %>
+          <% include partials/contents/resources.ejs %>
+        <% } else if (page == "editor") { %>
+          <% include partials/contents/editor.ejs %>
+        <% } else if (page == "login") { %>
+          <% include partials/contents/login.ejs %>
+        <% } %>
+      <% } %> <!-- if(typeof...)-->
+    </div>
+
+    <% include partials/template/footer.ejs %>
+    <% include partials/template/jsdefaults.ejs%>
+  </body>
+</html>

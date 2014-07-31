@@ -30,6 +30,7 @@ It uses:
 
 Planned features:
 - Admin account to access code from all users + manage accounts
+- Profile page for users to change password, avatar and see grades (?)
 - Content for home and resources pages
 - More dynamic jQuery styling (?)
 - Support for more languages (?)

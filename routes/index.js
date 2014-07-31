@@ -5,38 +5,39 @@
 
 exports.home = function (req, res) {
   if(req.user)
-    res.render('home_page', {user: req.user});
+    res.render('layout', {page: "home", user: req.user});
   else
-    res.render('home_page');
+    res.render('layout', {page: "home"});
 }
 
 exports.resources = function (req, res) {
   if(req.user)
-    res.render('resources_page', {user: req.user});
+    res.render('layout', {page: "resources", user: req.user});
   else
-    res.render('resources_page');
+    res.render('layout', {page: "resources"});
 }
 
 //Not currently in use, see app.js for currently used callback
 exports.files = function (req, res) {
   if(req.user)
-    res.render('files_page', {user: req.user});
+    res.render('layout', {page: "files", user: req.user});
   else
-    res.render('files_page');
+    res.render('layout', {page: "files"});
 }
+
 
 exports.editor = function (req, res) {
   if(req.user)
-    res.render('editor_page', {user: req.user});
+    res.render('layout', {page: "editor", user: req.user});
   else
-    res.render('editor_page');
+    res.render('layout', {page: "editor"});
 }
 
 exports.login = function (req, res) {
   if(req.user)
-    res.render('login_page', {user: req.user});
+    res.render('layout', {page: "login", user: req.user});
   else
-    res.render('login_page');
+    res.render('layout', {page: "login"});
 }
 
 

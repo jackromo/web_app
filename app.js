@@ -123,7 +123,6 @@ app.get('/resources', router.resources);
 app.get('/editor', router.editor);
 app.get('/login', router.login);
 
-
 //Loads files page for user
 app.get('/files', function(req, res) {
   if(req.user) {
@@ -138,11 +137,11 @@ app.get('/files', function(req, res) {
         var data = fs.readFileSync(dir + files[i], 'utf8');
         user_files.push({name: files[i], contents: data});
       }
-      res.render('files_page', {user: req.user, files: user_files});
+      res.render('layout', {page: "files", user: req.user, files: user_files});
     });
   }
   else
-    res.render('files_page', {files: []});
+    res.render('layout', {page: "files", files: []});
 });
 
 
