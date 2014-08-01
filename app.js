@@ -120,6 +120,7 @@ passport.use( new LocalStrategy (
 
 app.get('/', router.home);
 app.get('/resources', router.resources);
+app.get('/resources_:chapter?', router.chap); //Access chapter in tutorial within resources
 app.get('/editor', router.editor);
 app.get('/login', router.login);
 

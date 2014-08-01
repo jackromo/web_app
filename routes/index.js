@@ -17,6 +17,15 @@ exports.resources = function (req, res) {
     res.render('layout', {page: "resources"});
 }
 
+exports.chap = function (req, res) {
+  var ch_name = req.params.chapter; //Get chapter name
+  var ch_num = parseInt(ch_name.slice(2), 10); //Get number val (2nd arg specifies base 10)
+  if(req.user)
+    res.render('layout', {page: "res_ch", ch: ch_num, user: req.user})
+  else
+    res.render('layout', {page: "res_ch", ch: ch_num});
+}
+
 //Not currently in use, see app.js for currently used callback
 exports.files = function (req, res) {
   if(req.user)
