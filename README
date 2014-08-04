@@ -29,8 +29,8 @@ It uses:
 - Bootstrap for styles and header (navbar)
 
 Planned features:
-- Admin account to access code from all users + manage accounts
-- Profile page for users to change password, avatar and see grades (?)
+- Admin ability to remove accounts and add comments + grades to code
+- Profile page for users to change password, avatar and see grades
 - Content for home and resources pages
 - More dynamic jQuery styling (?)
 - Support for more languages (?)

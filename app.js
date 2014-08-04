@@ -124,6 +124,39 @@ app.get('/resources_:chapter?', router.chap); //Access chapter in tutorial withi
 app.get('/editor', router.editor);
 app.get('/login', router.login);
 
+//Loads page of all user programs, only admin can use
+app.get('/students', function(req, res) {
+  //Only accessible by admin
+  if(req.user && req.user.username == "admin") {
+
+    var st_data = []; //Array of objects, each with student name and array of files
+                      //Each file is an object with file name and contents
+
+    for(var i=0; i < accounts.users.length; i++) {
+
+      if(accounts.users[i].username == "admin") continue; //skip admin
+
+      var stud = accounts.users[i].username; //Current student
+      var dir = "./public/user_files/" + stud + "/";
+      var files = fs.readdirSync(dir); //Array of student's filenames (synchronous so array is in order)
+      var st_files = []; //Array of contents of files
+
+      for(var x=0; x < files.length; x++) {
+        //File reading must be synchronous, so array is in correct order
+        var data = fs.readFileSync(dir + files[x], 'utf8'); //Read contents of file 'x'
+        data = data.replace(/\r?\n/g, "\\n");   //Newlines disrupt formatting of HTML files, escape them
+        data = data.replace(/\'/g, '"');        //Single quotation marks disrupt HTML formatting
+
+        st_files.push({name: files[x], contents: data}); //Push file into st_files array
+      }
+
+      st_data.push({name: stud, files: st_files});
+    }
+    res.render('layout', {page: 'students', user: req.user, students: st_data});
+  }
+});
+
+
 //Loads files page for user
 app.get('/files', function(req, res) {
   if(req.user) {

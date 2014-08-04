@@ -1,0 +1,33 @@
+<% if(typeof student != undefined ) { %>
+
+<% for(var i=0; i < students.length; i++) { %>
+
+  <h1><%= students[i].name %></h1>
+  <ul>
+    <% for(var x=0; x < students[i].files.length; x++) { %>
+    <!-- Clicking button inserts program's code into editor textarea -->
+    <li>
+      <!-- ins_text takes name and contents of file as args, to change header + contents of editor -->
+      <button type="button" onclick="ins_text('<%= students[i].files[x].name %>', '<%= students[i].files[x].contents %>')">
+        <%= students[i].files[x].name %>
+      </button>
+    </li>
+    <% } %>
+  </ul>
+  <br />
+<% } %> <!--for loop-->
+
+<div id="st_editor">
+  <h2 id="st_ed_head">Code here</h2>
+  <form>
+    <textarea id="yourcode" cols="40" rows="10"></textarea><br />
+    <button type="button" onclick="runit()">Run</button>
+  </form>
+  <pre id="output"></pre>
+  <canvas id="mycanvas"></canvas>
+</div>
+
+<% } %> <!--if typeof student != undefined-->
+
+<!-- Custom python environment script -->
+<script src="scripts/students_env.js" type="text/javascript"></script>

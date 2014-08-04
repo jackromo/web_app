@@ -8,6 +8,11 @@
   <ul class="dropdown-menu" role="menu">
     <li><a href="#">My Profile</a></li>
     <li><a href="/files">My Code</a></li>
+
+    <% if (user.username == "admin") { %>
+      <li><a href="/students">Student Code</a></li>
+    <% } %>
+
     <li class="divider"></li>
     <li><a href="/signout">Sign Out</a></li>
   </ul>

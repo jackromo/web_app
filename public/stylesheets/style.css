@@ -34,3 +34,12 @@ header {
   background-color: #CCCCCC;
   bottom: 0px;
 }
+
+/*Other formatting*/
+
+#st_editor {
+  /*Editor in students page*/
+  position: fixed;
+  right: 0px;
+  top: 60px;
+}
