@@ -30,7 +30,6 @@ It uses:
 
 Planned features:
 - Admin ability to remove accounts and add comments + grades to code
-- Profile page for users to change password, avatar and see grades
 - Content for home and resources pages
 - More dynamic jQuery styling (?)
 - Support for more languages (?)
